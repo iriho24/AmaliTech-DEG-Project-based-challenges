@@ -59,13 +59,13 @@ export function TopNav() {
         <button className="flex items-center gap-3 hover:bg-white/5 p-1.5 pr-3 rounded-xl transition-all duration-300 border border-transparent hover:border-white/10 focus:outline-none focus:ring-2 focus:ring-violet-500/50">
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-violet-600 to-violet-900 border border-violet-400/30 flex items-center justify-center shadow-glow-sm">
             <span className="text-xs font-display font-bold text-white">
-              AC
+              IG
             </span>
           </div>
 
           <div className="hidden md:flex flex-col items-start">
             <span className="text-sm font-display font-medium text-gray-200 leading-none">
-              Alex Chen
+              Iriho Germain
             </span>
             <span className="text-[10px] font-mono text-gray-500 mt-1">
               SYS_ADMIN

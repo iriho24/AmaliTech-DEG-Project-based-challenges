@@ -1,12 +1,9 @@
-/* Font imports (must stay at top) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* Tailwind imports (do not change order) */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Base styles */
 @layer base {
   body {
     @apply bg-black-950 text-gray-300 font-sans antialiased;
@@ -14,26 +11,10 @@
   }
 }
 
-/* Custom utilities */
 @layer utilities {
-  /* Hide scrollbar */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Glass-style scrollbar */
   .scrollbar-glass::-webkit-scrollbar {
     width: 6px;
     height: 6px;
-  }
-
-  .scrollbar-glass::-webkit-scrollbar-track {
-    @apply bg-transparent;
   }
 
   .scrollbar-glass::-webkit-scrollbar-thumb {
@@ -44,13 +25,8 @@
     @apply bg-white/20;
   }
 
-  /* Background grid */
   .bg-grid {
     background-size: 32px 32px;
-    background-image: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   }
 }
