@@ -1,9 +1,9 @@
 
 # SecureVault — File Manager UI
 
-Hey! I made this for the AmaliTech frontend challenge. It’s basically a file manager with a dark, glassy look. You can click through folders, see file details, and check permissions. 
+AmaliTech frontend challenge. It’s basically a file manager with a dark, glassy look. You can click through folders, see file details, and check permissions. 
 
-It’s all frontend for now. No real backend or database yet, just fake data.
+It’s all frontend for now. No real backend or database yet, just fictional data.
 
 I designed it in Figma first, then built it with React.
 
