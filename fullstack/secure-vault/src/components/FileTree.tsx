@@ -9,8 +9,7 @@ import {
   Archive,
   File,
 } from 'lucide-react'
-import { FileNode } from '../lib/mockData'
-
+import type { FileNode } from '../lib/mockData'
 interface FileTreeProps {
   data: FileNode
   selectedId: string | null
