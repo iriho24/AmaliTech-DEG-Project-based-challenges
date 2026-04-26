@@ -1,122 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React, { useState } from 'react'
+import { TopNav } from './components/TopNav'
+import { Sidebar } from './components/Sidebar'
+import { Vault } from './pages/Vault'
+import { DesignSystem } from './pages/DesignSystem'
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+  const [activePage, setActivePage] = useState('vault')
+
+  const renderPage = () => {
+    if (activePage === 'vault') return <Vault />
+    if (activePage === 'design') return <DesignSystem />
+
+    const isPlaceholder = ['dashboard', 'activity', 'settings'].includes(activePage)
+
+    if (isPlaceholder) {
+      return (
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center max-w-md p-8 rounded-2xl border border-white/10 bg-glass-5 backdrop-blur-md">
+            <div className="w-16 h-16 rounded-full bg-violet-500/10 border border-violet-500/30 flex items-center justify-center mx-auto mb-6 shadow-glow">
+              <span className="text-violet-400 font-mono text-xl">{'</>'}</span>
+            </div>
+
+            <h2 className="text-2xl font-display font-semibold text-gray-100 mb-2 capitalize tracking-wide">
+              {activePage} Module
+            </h2>
+
+            <p className="text-gray-500 font-mono text-sm mb-8">
+              STATUS: ENCRYPTED / UNDER CONSTRUCTION
+            </p>
+
+            <button
+              onClick={() => setActivePage('vault')}
+              className="px-6 py-2.5 bg-white/5 border border-white/10 text-gray-200 rounded-xl text-sm font-medium hover:bg-white/10 hover:border-violet-500/50 hover:text-violet-300 transition-all duration-300 hover:shadow-glow-sm"
+            >
+              Return to SecureVault
+            </button>
+          </div>
+        </div>
+      )
+    }
+
+    return null
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="h-screen w-screen flex flex-col bg-black-950 bg-grid text-gray-300 overflow-hidden font-sans selection:bg-violet-500/30 selection:text-violet-200">
+      <TopNav />
 
-      <div className="ticks"></div>
+      <div className="flex-1 flex overflow-hidden p-4 gap-4">
+        <Sidebar activePage={activePage} setActivePage={setActivePage} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <main className="flex-1 flex overflow-hidden relative rounded-2xl border border-white/10 bg-glass-5 backdrop-blur-xl shadow-glass">
+          {renderPage()}
+        </main>
+      </div>
+    </div>
   )
 }
-
-export default App
